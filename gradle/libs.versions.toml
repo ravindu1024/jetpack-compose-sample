@@ -10,12 +10,13 @@ lifecycleRuntimeKtx = "2.8.2"
 activityCompose = "1.9.0"
 composeBom = "2024.06.00"
 hiltVersion = "2.49"
-navigationCompose = "2.7.7"
+navigationCompose = "2.8.0-alpha08"
 hiltNavVersion = "1.2.0"
 kspVersion = "1.9.0-1.0.11"
 kaptVersion = "1.9.0"
 retrofitVersion = "2.9.0"
 okhttpLoggerVersion = "4.11.0"
+roomVersion = "2.6.1"
 
 [libraries]
 androidx-activity-compose-v180 = { module = "androidx.activity:activity-compose", version.ref = "activityComposeVersion" }
@@ -36,6 +37,9 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-ui-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout-compose", version = "1.0.1"}
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "roomVersion"}
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomVersion"}
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomVersion"}
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hiltVersion" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hiltVersion" }
@@ -45,6 +49,8 @@ ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofitVersion"}
 retrofit-converter = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofitVersion"}
 okhttp-logger = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttpLoggerVersion"}
+glide = { group = "com.github.bumptech.glide", name = "compose", version = "1.0.0-beta01"}
+kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version = "1.2.2"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -52,4 +58,5 @@ jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = 
 kotlin-ksp = { id = "com.google.devtools.ksp", version.ref = "kspVersion" }
 hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hiltVersion" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kaptVersion"}
+kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version = "1.7.10"}
 

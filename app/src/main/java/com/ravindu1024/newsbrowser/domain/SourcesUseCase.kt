@@ -1,6 +1,5 @@
 package com.ravindu1024.newsbrowser.domain
 
-import androidx.compose.ui.text.intl.Locale
 import com.ravindu1024.newsbrowser.data.repository.NewsRepository
 import com.ravindu1024.newsbrowser.model.domain.NewsSource
 import kotlinx.coroutines.flow.Flow
@@ -12,5 +11,21 @@ class SourcesUseCase @Inject constructor(
 
     suspend fun getAllLocalSources(): Flow<List<NewsSource>> {
         return newsRepository.getNewsSources("au")
+    }
+
+    suspend fun getAllSavedSources(): Flow<List<String>> {
+        return newsRepository.getSavedSources()
+    }
+
+    suspend fun addSavedSource(id: String): Flow<List<String>>{
+        newsRepository.insertSavedSource(id)
+
+        return newsRepository.getSavedSources()
+    }
+
+    suspend fun deleteSavedSource(id: String): Flow<List<String>>{
+        newsRepository.deleteSavedSource(id)
+
+        return newsRepository.getSavedSources()
     }
 }

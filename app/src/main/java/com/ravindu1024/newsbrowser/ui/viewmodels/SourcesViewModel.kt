@@ -5,39 +5,45 @@ import androidx.lifecycle.viewModelScope
 import com.ravindu1024.newsbrowser.domain.AppSharedPrefs
 import com.ravindu1024.newsbrowser.domain.SourcesUseCase
 import com.ravindu1024.newsbrowser.ui.state.SourcesListUiState
+import com.ravindu1024.newsbrowser.utils.launchIO
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flatMapConcat
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.flow.zip
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
 @HiltViewModel
 class SourcesViewModel @Inject constructor(
-    private val sourcesUseCase: SourcesUseCase,
-    private val sharedPrefs: AppSharedPrefs
+    private val sourcesUseCase: SourcesUseCase
 ): ViewModel() {
 
     private val _uiState = MutableStateFlow(SourcesListUiState())
     val uiState: StateFlow<SourcesListUiState> = _uiState
-
-    init {
-        _uiState.update {
-            it.copy(savedSources = sharedPrefs.getSources())
-        }
-    }
 
     fun getSources(){
         _uiState.update {
             it.copy(isLoading = true)
         }
 
-        viewModelScope.launch {
-            sourcesUseCase.getAllLocalSources()
+        viewModelScope.launchIO {
+
+            sourcesUseCase.getAllSavedSources()
+                .flatMapConcat { saved ->
+                    _uiState.update {
+                        it.copy(savedSources = saved)
+                    }
+                    sourcesUseCase.getAllLocalSources()
+                }
                 .flowOn(Dispatchers.IO)
                 .catch { error ->
                     _uiState.update {
@@ -53,19 +59,23 @@ class SourcesViewModel @Inject constructor(
     }
 
     fun updateSource(source: String, add: Boolean){
-        val savedSources = sharedPrefs.getSources().toMutableList()
-        if(add && !savedSources.contains(source)){
-            savedSources.add(source)
-            sharedPrefs.saveSources(savedSources)
-        }
-
-        if(!add){
-            savedSources.remove(source)
-            sharedPrefs.saveSources(savedSources)
-        }
-
         _uiState.update {
-            it.copy(savedSources = savedSources)
+            it.copy(isLoading = true)
+        }
+
+        viewModelScope.launch {
+            if(add){
+                sourcesUseCase.addSavedSource(source)
+            }else{
+                sourcesUseCase.deleteSavedSource(source)
+            }.collect{ updatedSavedSources ->
+                _uiState.update {
+                    it.copy(
+                        isLoading = false,
+                        savedSources = updatedSavedSources
+                    )
+                }
+            }
         }
     }
 }

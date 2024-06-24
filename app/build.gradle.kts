@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.hilt.android)
+    alias(libs.plugins.kotlin.ksp)
+    alias(libs.plugins.kotlinx.serialization)
     id("kotlin-kapt")   // This does not work with a version specified - limitation of Gradle
 }
 
@@ -11,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId = "com.ravindu1024.newsbrowser"
-        minSdk = 24
+        minSdk = 28
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -72,10 +74,16 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.glide)
+    implementation(libs.kotlinx.serialization)
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)            //This version of Hilt does not work with KSP
     implementation(libs.hilt.navigation)
+
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    kapt(libs.androidx.room.compiler)
 
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter)

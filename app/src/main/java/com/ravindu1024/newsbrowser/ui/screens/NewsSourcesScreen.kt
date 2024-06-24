@@ -5,10 +5,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
@@ -29,13 +27,27 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.ravindu1024.newsbrowser.model.domain.NewsSource
+import com.ravindu1024.newsbrowser.ui.components.ListRefreshIndicator
 import com.ravindu1024.newsbrowser.ui.state.SourcesListUiState
+import com.ravindu1024.newsbrowser.ui.state.TopBarUiState
+import com.ravindu1024.newsbrowser.ui.theme.CustomTypography
 import com.ravindu1024.newsbrowser.ui.viewmodels.SourcesViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.update
 
 @Composable
 fun NewsSourcesScreen(
+    barActions: MutableStateFlow<TopBarUiState>,
     viewModel: SourcesViewModel = hiltViewModel()
 ) {
+    // setup app bar
+    barActions.update {
+        it.copy(
+            title = "News sources",
+            actions = emptyList()
+        )
+    }
+
     val uiState by viewModel.uiState.collectAsState()
 
 
@@ -58,7 +70,6 @@ fun NewsSourcesScreen(
 
     remember {
         viewModel.getSources()
-        return@remember 0
     }
 }
 
@@ -83,6 +94,7 @@ fun SourcesList(
                         val (text, switch) = createRefs()
                         Text(
                             text = source.name,
+                            style = CustomTypography.textRegular,
                             modifier = Modifier.constrainAs(text){
                                 start.linkTo(parent.start, margin = 0.dp)
                                 top.linkTo(parent.top, margin = 0.dp)
@@ -108,12 +120,7 @@ fun SourcesList(
 
         //todo: remove hardcoded values
         if(uiState.isLoading) {
-            CircularProgressIndicator(
-                modifier = Modifier
-                    .align(Alignment.TopCenter)
-                    .size(28.dp)
-                    .padding(top = 32.dp)
-            )
+            ListRefreshIndicator(Modifier.align(Alignment.TopCenter))
         }
 
         PullToRefreshContainer(

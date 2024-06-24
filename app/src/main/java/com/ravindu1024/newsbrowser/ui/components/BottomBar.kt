@@ -1,6 +1,7 @@
 package com.ravindu1024.newsbrowser.ui.components
 
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -15,24 +16,27 @@ import com.ravindu1024.newsbrowser.ui.BottomNavItem
 fun BottomNavBar(
     navItems: List<BottomNavItem>,
     currentRoute: String,
-    navController: NavController
+    navController: NavController,
+    enabled: Boolean
 ){
-    NavigationBar {
-        navItems.forEach {
-            NavigationBarItem(
-                selected = currentRoute == it.route,
-                onClick = {
-                    navController.navigate(it.route) {
-                        popUpTo(navController.graph.findStartDestination().id) {
-                            saveState = true
+    AnimatedVisibility(visible = enabled) {
+        NavigationBar {
+            navItems.forEach {
+                NavigationBarItem(
+                    selected = currentRoute == it.route,
+                    onClick = {
+                        navController.navigate(it.route) {
+                            popUpTo(navController.graph.findStartDestination().id) {
+                                saveState = true
+                            }
+                            launchSingleTop = true
+                            restoreState = true
                         }
-                        launchSingleTop = true
-                        restoreState = true
-                    }
-                },
-                icon = { Icon(it.icon, contentDescription = null) },
-                label = { Text(text = it.label) }
-            )
+                    },
+                    icon = { Icon(it.icon, contentDescription = null) },
+                    label = { Text(text = it.label) }
+                )
+            }
         }
     }
 }
