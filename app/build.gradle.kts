@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.kotlin.ksp)
     alias(libs.plugins.kotlinx.serialization)
+    id("kotlin-parcelize")
     id("kotlin-kapt")   // This does not work with a version specified - limitation of Gradle
 }
 

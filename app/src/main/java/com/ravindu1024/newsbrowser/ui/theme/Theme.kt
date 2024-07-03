@@ -29,19 +29,6 @@ private val LightColorScheme = lightColorScheme(
     onPrimary = Color.Red
 )
 
-
-val ColorScheme.primaryTextColor: Color
-    @Composable
-    get() = if (isSystemInDarkTheme()) primaryTextDark else primaryTextLight
-
-val ColorScheme.secondaryTextColor: Color
-    @Composable
-    get() = if (isSystemInDarkTheme()) secondaryTextDark else secondaryTextLight
-
-val ColorScheme.tertiaryTextColor: Color
-    @Composable
-    get() = if (isSystemInDarkTheme()) tertiaryTextDark else tertiaryTextLight
-
 @Composable
 fun NewsBrowserTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
@@ -49,6 +36,8 @@ fun NewsBrowserTheme(
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
+
+
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current

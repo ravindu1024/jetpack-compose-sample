@@ -7,18 +7,21 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
-import com.ravindu1024.newsbrowser.ui.BottomNavItem
+import androidx.navigation.compose.rememberNavController
+import com.ravindu1024.newsbrowser.ui.BottomNavDestination
+import com.ravindu1024.newsbrowser.ui.theme.NewsBrowserTheme
 
 
 @Composable
 fun BottomNavBar(
-    navItems: List<BottomNavItem>,
-    currentRoute: String,
     navController: NavController,
+    navItems: List<BottomNavDestination>,
+    currentRoute: String,
     enabled: Boolean
-){
+) {
     AnimatedVisibility(visible = enabled) {
         NavigationBar {
             navItems.forEach {
@@ -38,5 +41,22 @@ fun BottomNavBar(
                 )
             }
         }
+    }
+}
+
+@Preview
+@Composable
+fun BottomNavBarPreview() {
+    NewsBrowserTheme {
+        BottomNavBar(
+            navController = rememberNavController(),
+            navItems = listOf(
+                BottomNavDestination.Headlines,
+                BottomNavDestination.Sources,
+                BottomNavDestination.Saved
+            ),
+            currentRoute = "",
+            enabled = true
+        )
     }
 }
