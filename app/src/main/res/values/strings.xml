@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">News Browser</string>
-    <string name="news_api_key">46dbdf5864c548d48ccafa4156960e89</string>
+    <string name="news_api_key"></string>
     <string name="base_url_newsapi">https://newsapi.org</string>
 
     <!--Navigation Bar-->
