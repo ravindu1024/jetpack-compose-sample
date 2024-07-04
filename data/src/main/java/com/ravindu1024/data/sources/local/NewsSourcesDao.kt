@@ -1,4 +1,4 @@
-package com.ravindu1024.data.sources
+package com.ravindu1024.data.sources.local
 
 import androidx.room.Dao
 import androidx.room.Delete

@@ -20,7 +20,7 @@ fun SavedHeadLinesScreen(
     barActions: (String, List<TopBarAction>) -> Unit,
     onItemCLicked: (NewsHeadline) -> Unit,
     viewModel: SavedHeadlinesViewModel = hiltViewModel()
-){
+) {
     val uiState by viewModel.uiState.collectAsState()
     // setup app bar
     barActions("Saved Articles", emptyList())
@@ -39,7 +39,7 @@ fun SavedHeadLinesScreen(
 fun SavedHeadlineScreenContent(
     uiState: SavedHeadlinesUiState,
     onItemCLicked: (NewsHeadline) -> Unit
-){
+) {
     PullRefreshLazyList(
         items = uiState.savedHeadlines,
         pullRefreshState = null,
@@ -55,7 +55,7 @@ fun SavedHeadlineScreenContent(
 
 @Preview
 @Composable
-fun SavedHeadlineScreenContentPreview(){
+fun SavedHeadlineScreenContentPreview() {
     val headlines = listOf(
         NewsHeadline(
             source = "ABC News",

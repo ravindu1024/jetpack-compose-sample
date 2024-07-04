@@ -1,4 +1,4 @@
-package com.ravindu1024.data.sources
+package com.ravindu1024.data.sources.remote
 
 import com.ravindu1024.data.dto.HeadlinesDto
 import com.ravindu1024.data.dto.NewsSourcesDto

@@ -31,7 +31,7 @@ fun NewsSourcesScreen(
         viewModel.getSources()
     }
 
-    if(!uiState.isLoading){
+    if (!uiState.isLoading) {
         pullRefreshState.endRefresh()
     }
 
@@ -54,7 +54,7 @@ fun NewsSourcesScreenContent(
     uiState: SourcesListUiState,
     pullRefreshState: PullToRefreshState,
     onSwitchClicked: (Boolean, NewsSource) -> Unit
-){
+) {
     PullRefreshLazyList(
         items = uiState.sources,
         pullRefreshState = pullRefreshState,
@@ -73,12 +73,15 @@ fun NewsSourcesScreenContent(
 
 @Preview
 @Composable
-fun NewsSourcesScreenContentPreview(){
+fun NewsSourcesScreenContentPreview() {
     val sources = listOf(
         NewsSource(id = "", name = "ABC"),
         NewsSource(id = "", name = "The Guardian"),
         NewsSource(id = "", name = "ljvnskldj skljnvkljsdnv skljvnskljv \nsljnvklsjvn\n slnvsjklv")
     )
     val uiState = SourcesListUiState(sources = sources)
-    NewsSourcesScreenContent(pullRefreshState = PullToRefreshState(positionalThresholdPx = 0f), uiState = uiState, onSwitchClicked = {_, _ ->})
+    NewsSourcesScreenContent(
+        pullRefreshState = PullToRefreshState(positionalThresholdPx = 0f),
+        uiState = uiState,
+        onSwitchClicked = { _, _ -> })
 }

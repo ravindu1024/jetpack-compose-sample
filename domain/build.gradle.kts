@@ -36,11 +36,15 @@ android {
 
 dependencies {
 
-    implementation(libs.androidx.core.ktx)
+    // Test and debug
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // Android
+    implementation(libs.androidx.core.ktx)
     implementation(libs.kotlinx.serialization)
 
+    // Modules
     api(project(":data"))
 }

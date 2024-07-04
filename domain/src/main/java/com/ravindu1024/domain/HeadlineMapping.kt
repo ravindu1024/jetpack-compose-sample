@@ -1,8 +1,8 @@
 package com.ravindu1024.domain
 
-import com.ravindu1024.domain.model.NewsHeadline
 import com.ravindu1024.data.dto.NewsHeadlineDto
 import com.ravindu1024.data.entity.HeadlineEntity
+import com.ravindu1024.domain.model.NewsHeadline
 
 
 fun NewsHeadline.toEntity() = HeadlineEntity(

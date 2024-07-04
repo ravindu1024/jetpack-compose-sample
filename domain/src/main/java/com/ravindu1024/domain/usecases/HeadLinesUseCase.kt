@@ -9,19 +9,19 @@ import kotlinx.coroutines.flow.flatMapMerge
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 
-class HeadLinesUseCase constructor(
+class HeadLinesUseCase(
     private val newsRepository: NewsRepository
 ) {
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    suspend fun getHeadlines(pageNum: Int, pageSize: Int): Flow<List<NewsHeadline>>{
+    suspend fun getHeadlines(pageNum: Int, pageSize: Int): Flow<List<NewsHeadline>> {
         return newsRepository.getSavedSources()
             .flatMapMerge { sources ->
-                if(sources.isEmpty()){
+                if (sources.isEmpty()) {
                     return@flatMapMerge flow {
                         emit(emptyList())
                     }
-                }else {
+                } else {
                     newsRepository.getHeadlines(
                         pageSize = pageSize,
                         pageNum = pageNum,

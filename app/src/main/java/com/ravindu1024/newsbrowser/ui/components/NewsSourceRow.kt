@@ -22,18 +22,20 @@ fun NewsSourceRow(
     source: NewsSource,
     isChecked: Boolean,
     onSwitchClicked: (Boolean, NewsSource) -> Unit
-){
+) {
     ListItem(modifier = Modifier
         .padding(0.dp)
         .background(Color.Blue), headlineContent = {
-        ConstraintLayout(modifier = Modifier
-            .fillMaxWidth()
-            .padding(0.dp)) {
+        ConstraintLayout(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(0.dp)
+        ) {
             val (text, switch) = createRefs()
             Text(
                 text = source.name,
                 style = CustomTypography.textRegular,
-                modifier = Modifier.constrainAs(text){
+                modifier = Modifier.constrainAs(text) {
                     start.linkTo(parent.start, margin = 0.dp)
                     top.linkTo(parent.top, margin = 0.dp)
                     bottom.linkTo(parent.bottom, margin = 0.dp)
@@ -44,7 +46,7 @@ fun NewsSourceRow(
             Switch(
                 checked = isChecked,
                 onCheckedChange = { onSwitchClicked(it, source) },
-                modifier = Modifier.constrainAs(switch){
+                modifier = Modifier.constrainAs(switch) {
                     top.linkTo(parent.top, margin = 0.dp)
                     end.linkTo(parent.end, margin = 0.dp)
 
@@ -56,16 +58,15 @@ fun NewsSourceRow(
 
 @Preview
 @Composable
-fun NewsSourceRowPreview(){
+fun NewsSourceRowPreview() {
     NewsBrowserTheme {
         NewsSourceRow(
             source = NewsSource(
                 id = "abc",
-                name = "ABC News",
-                isSaved = true
+                name = "ABC News"
             ),
             isChecked = true,
-            onSwitchClicked = {_, _ -> }
+            onSwitchClicked = { _, _ -> }
         )
     }
 }

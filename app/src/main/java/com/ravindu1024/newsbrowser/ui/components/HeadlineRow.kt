@@ -2,7 +2,6 @@ package com.ravindu1024.newsbrowser.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -44,8 +43,6 @@ fun HeadlineRow(
                 .clickable { onItemClick(headline) }
         ) {
             headline.urlToImage?.let {
-                val c = colorScheme.newsCardColor
-                val d = isSystemInDarkTheme()
                 GlideImage(
                     model = it,
                     contentDescription = headline.title,
@@ -133,8 +130,7 @@ fun HeadlineRowPreview() {
                 publishedAt = "2024-03-10T10:00:00",
                 source = "ABC News",
                 title = "News Headline Title"
-            ),
-            {}
-        )
+            )
+        ) {}
     }
 }

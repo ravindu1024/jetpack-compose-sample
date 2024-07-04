@@ -6,7 +6,7 @@ import com.ravindu1024.domain.toDomain
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-class SourcesUseCase constructor(
+class SourcesUseCase (
     private val newsRepository: NewsRepository
 ) {
 

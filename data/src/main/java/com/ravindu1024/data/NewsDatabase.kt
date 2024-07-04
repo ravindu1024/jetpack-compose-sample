@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.ravindu1024.data.sources.HeadlinesDao
-import com.ravindu1024.data.sources.NewsSourcesDao
+import com.ravindu1024.data.sources.local.HeadlinesDao
+import com.ravindu1024.data.sources.local.NewsSourcesDao
 import com.ravindu1024.data.entity.HeadlineEntity
 import com.ravindu1024.data.entity.SavedSourceEntity
 

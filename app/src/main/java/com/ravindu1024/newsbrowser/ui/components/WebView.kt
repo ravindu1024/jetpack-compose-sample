@@ -11,7 +11,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 fun WebView(
     modifier: Modifier,
     url: String
-){
+) {
     Box(modifier = modifier) {
         AndroidView(
             factory = {
@@ -28,9 +28,12 @@ fun WebView(
                 }
             },
             update = {
-                if(url.startsWith("http://")) {
+                // This is necessary since some NewsAPI URLs are just http and they get redirected
+                // but Android will block them locally before that can happen. So we need to
+                // do this redirect here
+                if (url.startsWith("http://")) {
                     it.loadUrl(url.replace("http://", "https://"))
-                }else{
+                } else {
                     it.loadUrl(url)
                 }
             }

@@ -60,7 +60,11 @@ fun NewsApp(
     val topBarActionFlow = MutableStateFlow(TopBarUiState())
     val barActionState: TopBarUiState by topBarActionFlow.collectAsState()
 
-    val navItems = listOf(BottomNavDestination.Headlines, BottomNavDestination.Sources, BottomNavDestination.Saved)
+    val navItems = listOf(
+        BottomNavDestination.Headlines,
+        BottomNavDestination.Sources,
+        BottomNavDestination.Saved
+    )
     val currentBottomNavScreen = navItems.firstOrNull { it.route == currentRoute }
 
     // Back button is disabled for the Bottom Nav screens
@@ -109,7 +113,7 @@ private fun SetupNavHost(
     navController: NavHostController,
     innerPadding: PaddingValues,
     barActionsCallBack: ((String, List<TopBarAction>) -> Unit)
-){
+) {
     NavHost(
         navController = navController,
         startDestination = BottomNavDestination.Headlines.route,
@@ -131,7 +135,7 @@ private fun SetupNavHost(
             })
         }
 
-        composable<NewsDetail>{ backstackEntry ->
+        composable<NewsDetail> { backstackEntry ->
             val detail = backstackEntry.toRoute<NewsDetail>()
             val headline = gson.fromJson(detail.encodedHeadline, NewsHeadline::class.java)
 

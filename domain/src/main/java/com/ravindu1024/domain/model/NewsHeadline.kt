@@ -14,4 +14,4 @@ data class NewsHeadline(
     val url: String,
     val urlToImage: String?,
     val publishedAt: String
-): Parcelable
+) : Parcelable

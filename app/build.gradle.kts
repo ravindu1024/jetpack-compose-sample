@@ -54,7 +54,18 @@ android {
 
 dependencies {
 
-    // Android
+    // Tests and debug
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+    debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.androidx.ui.test.manifest)
+    debugImplementation(libs.ui.test.manifest)
+    debugImplementation(libs.ui.tooling)
+    testImplementation(libs.junit)
+
+    // Androidx
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -64,13 +75,6 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.ui.constraintlayout)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
     implementation(libs.androidx.navigation.compose)
 
     // Glide
@@ -84,8 +88,6 @@ dependencies {
     kapt(libs.hilt.compiler)            //This version of Hilt does not work with KSP
     implementation(libs.hilt.navigation)
 
-    debugImplementation(libs.ui.test.manifest)
-    debugImplementation(libs.ui.tooling)
-
+    // Modules
     implementation(project(":domain"))
 }

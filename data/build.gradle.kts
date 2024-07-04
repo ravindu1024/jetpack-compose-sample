@@ -35,10 +35,13 @@ android {
 
 dependencies {
 
-    implementation(libs.androidx.core.ktx)
+    // Tests and debug
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // Androidx
+    implementation(libs.androidx.core.ktx)
 
     // Room
     api(libs.androidx.room.runtime)

@@ -28,7 +28,7 @@ fun TopBar(
         modifier = modifier,
         colors = TopAppBarDefaults.topAppBarColors(),
         actions = {
-            uiState.actions.forEach {action ->
+            uiState.actions.forEach { action ->
                 IconButton(onClick = { action.onClick() }) {
                     Icon(action.icon, null)
                 }
@@ -49,7 +49,7 @@ fun TopBar(
 
 @Preview
 @Composable
-fun TopBarPreview(){
+fun TopBarPreview() {
     val actions = listOf(
         TopBarAction(
             icon = Icons.Default.Favorite,
