@@ -1,6 +1,6 @@
 package com.ravindu1024.newsbrowser.ui.state
 
-import com.ravindu1024.newsbrowser.model.domain.NewsSource
+import com.ravindu1024.domain.model.NewsSource
 
 data class SourcesListUiState(
     val sources: List<NewsSource> = emptyList(),

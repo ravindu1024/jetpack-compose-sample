@@ -21,7 +21,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import com.google.gson.Gson
-import com.ravindu1024.newsbrowser.model.domain.NewsHeadline
+import com.ravindu1024.domain.model.NewsHeadline
 import com.ravindu1024.newsbrowser.ui.components.BottomNavBar
 import com.ravindu1024.newsbrowser.ui.components.TopBar
 import com.ravindu1024.newsbrowser.ui.screens.HeadLineScreen

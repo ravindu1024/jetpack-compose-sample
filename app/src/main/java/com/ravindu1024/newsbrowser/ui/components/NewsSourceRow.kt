@@ -13,7 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
-import com.ravindu1024.newsbrowser.model.domain.NewsSource
+import com.ravindu1024.domain.model.NewsSource
 import com.ravindu1024.newsbrowser.ui.theme.CustomTypography
 import com.ravindu1024.newsbrowser.ui.theme.NewsBrowserTheme
 

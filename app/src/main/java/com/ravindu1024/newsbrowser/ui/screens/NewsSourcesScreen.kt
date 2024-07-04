@@ -8,7 +8,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.ravindu1024.newsbrowser.model.domain.NewsSource
+import com.ravindu1024.domain.model.NewsSource
 import com.ravindu1024.newsbrowser.ui.components.NewsSourceRow
 import com.ravindu1024.newsbrowser.ui.components.PullRefreshLazyList
 import com.ravindu1024.newsbrowser.ui.state.SourcesListUiState

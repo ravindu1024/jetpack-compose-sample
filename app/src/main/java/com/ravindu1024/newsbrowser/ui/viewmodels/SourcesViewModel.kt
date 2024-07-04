@@ -2,22 +2,17 @@ package com.ravindu1024.newsbrowser.ui.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ravindu1024.newsbrowser.domain.AppSharedPrefs
-import com.ravindu1024.newsbrowser.domain.SourcesUseCase
+import com.ravindu1024.domain.usecases.SourcesUseCase
 import com.ravindu1024.newsbrowser.ui.state.SourcesListUiState
 import com.ravindu1024.newsbrowser.utils.launchIO
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flatMapConcat
-import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.flow.zip
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

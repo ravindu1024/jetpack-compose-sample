@@ -12,7 +12,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.ravindu1024.newsbrowser.model.domain.NewsHeadline
+import com.ravindu1024.domain.model.NewsHeadline
 import com.ravindu1024.newsbrowser.ui.components.WebView
 import com.ravindu1024.newsbrowser.ui.state.NewsDetailUiState
 import com.ravindu1024.newsbrowser.ui.state.TopBarAction

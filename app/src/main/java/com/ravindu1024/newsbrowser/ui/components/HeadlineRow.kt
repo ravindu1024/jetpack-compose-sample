@@ -20,11 +20,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
-import com.ravindu1024.newsbrowser.model.domain.NewsHeadline
+import com.ravindu1024.domain.model.NewsHeadline
 import com.ravindu1024.newsbrowser.ui.theme.CustomColors.newsCardColor
 import com.ravindu1024.newsbrowser.ui.theme.CustomTypography
 import com.ravindu1024.newsbrowser.ui.theme.Dimensions
-import com.ravindu1024.newsbrowser.ui.theme.Gray100
 import com.ravindu1024.newsbrowser.ui.theme.NewsBrowserTheme
 import com.ravindu1024.newsbrowser.utils.DateUtils
 

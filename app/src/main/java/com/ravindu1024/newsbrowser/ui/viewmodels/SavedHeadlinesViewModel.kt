@@ -2,7 +2,7 @@ package com.ravindu1024.newsbrowser.ui.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ravindu1024.newsbrowser.domain.SavedHeadlinesUseCase
+import com.ravindu1024.domain.usecases.SavedHeadlinesUseCase
 import com.ravindu1024.newsbrowser.ui.state.SavedHeadlinesUiState
 import com.ravindu1024.newsbrowser.utils.launchIO
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SavedHeadlinesViewModel @Inject constructor(
-    private val savedHeadlinesUseCase: SavedHeadlinesUseCase
+    private val savedHeadlinesUseCase: com.ravindu1024.domain.usecases.SavedHeadlinesUseCase
 ): ViewModel() {
 
     private val _uiState = MutableStateFlow(SavedHeadlinesUiState())

@@ -1,5 +1,11 @@
 [versions]
-activityComposeVersion = "1.9.0"
+minSdkVersion = "24"
+compileSdkVersion = "34"
+targetSdkVersion = "34"
+version = "1.0"
+versionCode = "1"
+jvmTarget = "1.8"
+
 agp = "8.4.2"
 kotlin = "1.9.0"
 coreKtx = "1.13.1"
@@ -13,14 +19,12 @@ hiltVersion = "2.49"
 navigationCompose = "2.8.0-alpha08"
 hiltNavVersion = "1.2.0"
 kspVersion = "1.9.0-1.0.11"
-kaptVersion = "1.9.0"
 retrofitVersion = "2.9.0"
 okhttpLoggerVersion = "4.11.0"
 roomVersion = "2.6.1"
 
+
 [libraries]
-androidx-activity-compose-v180 = { module = "androidx.activity:activity-compose", version.ref = "activityComposeVersion" }
-androidx-compose-material3-material3 = { module = "androidx.compose.material3:material3" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-runtime = { module = "androidx.compose.runtime:runtime" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -57,7 +61,6 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-ksp = { id = "com.google.devtools.ksp", version.ref = "kspVersion" }
 hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hiltVersion" }
-kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kaptVersion"}
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version = "1.7.10"}
-kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version = "1.7.0"}
+android-library = { id = "com.android.library", version.ref = "agp" }
 

@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
-buildscript {
 
+buildscript {
 }
 
 plugins {
@@ -10,4 +10,5 @@ plugins {
     alias(libs.plugins.hilt.android) apply false
     alias(libs.plugins.kotlin.ksp) apply false
     alias(libs.plugins.kotlinx.serialization) apply false
+    alias(libs.plugins.android.library) apply false
 }

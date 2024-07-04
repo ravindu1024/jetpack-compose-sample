@@ -10,14 +10,14 @@ plugins {
 
 android {
     namespace = "com.ravindu1024.newsbrowser"
-    compileSdk = 34
+    compileSdk = libs.versions.compileSdkVersion.get().toInt()
 
     defaultConfig {
         applicationId = "com.ravindu1024.newsbrowser"
-        minSdk = 28
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        minSdk = libs.versions.minSdkVersion.get().toInt()
+        targetSdk = libs.versions.targetSdkVersion.get().toInt()
+        versionCode = libs.versions.versionCode.get().toInt()
+        versionName = libs.versions.version.get()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -39,7 +39,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = libs.versions.jvmTarget.get()
         freeCompilerArgs += "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api"
     }
     buildFeatures {
@@ -49,15 +49,12 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
     }
-//    packaging {
-//        resources {
-//            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-//        }
-//    }
+
 }
 
 dependencies {
 
+    // Android
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -75,21 +72,20 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation(libs.androidx.navigation.compose)
+
+    // Glide
     implementation(libs.glide)
+
+    // kotlin
     implementation(libs.kotlinx.serialization)
 
+    // Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)            //This version of Hilt does not work with KSP
     implementation(libs.hilt.navigation)
 
-    implementation(libs.androidx.room.runtime)
-    implementation(libs.androidx.room.ktx)
-    kapt(libs.androidx.room.compiler)
-
-    implementation(libs.retrofit)
-    implementation(libs.retrofit.converter)
-    implementation(libs.okhttp.logger)
-
     debugImplementation(libs.ui.test.manifest)
     debugImplementation(libs.ui.tooling)
+
+    implementation(project(":domain"))
 }
