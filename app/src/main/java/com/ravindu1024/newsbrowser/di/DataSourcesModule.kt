@@ -30,7 +30,7 @@ class DataSourcesModule {
 
     @Provides
     fun provideRetrofit(@ApplicationContext context: Context): Retrofit {
-        val headerInterceptor = HeaderInterceptor(context.getString(R.string.news_api_key))
+        val headerInterceptor = HeaderInterceptor(BuildConfig.NEWS_API_KEY)
         return RetrofitClient.init(
             enableLogging = BuildConfig.DEBUG,
             baseUrl = context.getString(R.string.base_url_newsapi),

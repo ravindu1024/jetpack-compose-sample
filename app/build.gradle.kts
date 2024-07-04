@@ -1,3 +1,6 @@
+import java.util.Properties
+
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -8,9 +11,14 @@ plugins {
     id("kotlin-kapt")   // This does not work with a version specified - limitation of Gradle
 }
 
+
 android {
     namespace = "com.ravindu1024.newsbrowser"
     compileSdk = libs.versions.compileSdkVersion.get().toInt()
+
+    val properties = Properties().apply {
+        rootProject.file("local.properties").reader().use(::load)
+    }
 
     defaultConfig {
         applicationId = "com.ravindu1024.newsbrowser"
@@ -18,6 +26,8 @@ android {
         targetSdk = libs.versions.targetSdkVersion.get().toInt()
         versionCode = libs.versions.versionCode.get().toInt()
         versionName = libs.versions.version.get()
+
+        buildConfigField("String", "NEWS_API_KEY", "\"${properties["newsapi.key"] as String}\"")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
