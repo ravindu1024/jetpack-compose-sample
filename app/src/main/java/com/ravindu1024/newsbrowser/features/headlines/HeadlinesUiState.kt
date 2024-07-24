@@ -6,6 +6,6 @@ data class HeadlinesUiState(
     val isLoading: Boolean = false,
     val error: Throwable? = null,
     val headlines: List<NewsHeadline> = emptyList(),
-    val pageNum: Int = 0,
-    val pageSize: Int = 20
+    val pageNum: Int = 1,
+    val pageSize: Int = 10
 )

@@ -3,7 +3,9 @@ package com.ravindu1024.newsbrowser.ui.components.composite
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.Text
 import androidx.compose.material3.pulltorefresh.PullToRefreshContainer
 import androidx.compose.material3.pulltorefresh.PullToRefreshState
@@ -21,6 +23,7 @@ fun <T> PullRefreshLazyList(
     pullRefreshState: PullToRefreshState?,
     isLoading: Boolean,
     modifier: Modifier = Modifier,
+    state: LazyListState? = null,
     rowProvider: @Composable (T) -> Unit
 ) {
     Box(
@@ -35,7 +38,8 @@ fun <T> PullRefreshLazyList(
                 .then(modifier)
         }
     ) {
-        LazyColumn {
+        val listState = state ?: rememberLazyListState()
+        LazyColumn(state = listState) {
             items(items) { item ->
                 rowProvider(item)
             }

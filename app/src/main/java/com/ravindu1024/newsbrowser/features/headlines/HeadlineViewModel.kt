@@ -10,6 +10,7 @@ import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.update
 import javax.inject.Inject
 
@@ -21,29 +22,16 @@ class HeadlineViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(HeadlinesUiState())
     val uiState: StateFlow<HeadlinesUiState> = _uiState
 
-    fun getHeadlines() {
+    fun getHeadlines(nextPage: Boolean) {
         _uiState.update {
-            it.copy(isLoading = true)
+            it.copy(
+                isLoading = true,
+                pageNum = if(nextPage) it.pageNum + 1 else 1
+            )
         }
 
 
         viewModelScope.launchIO {
-
-            val c1 = async {
-                for(i in 1 until 100){
-                    println("c1: $i")
-                }
-            }
-
-            val c2 = async {
-                for(i in 1 until 100){
-                    println("c2: $i")
-                }
-            }
-
-            listOf(c1, c2).awaitAll()
-
-
             headLinesUseCase.getHeadlines(
                 pageNum = _uiState.value.pageNum,
                 pageSize = _uiState.value.pageSize
@@ -55,11 +43,16 @@ class HeadlineViewModel @Inject constructor(
                     }
                 }
                 .collect { headlines ->
+                    val h = if(nextPage){
+                        _uiState.value.headlines + headlines
+                    }else{
+                        headlines
+                    }
                     _uiState.update {
                         it.copy(
                             isLoading = false,
                             error = null,
-                            headlines = headlines
+                            headlines = h
                         )
                     }
                 }
