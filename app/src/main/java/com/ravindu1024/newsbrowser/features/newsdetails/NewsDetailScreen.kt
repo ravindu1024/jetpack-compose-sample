@@ -1,4 +1,4 @@
-package com.ravindu1024.newsbrowser.ui.screens
+package com.ravindu1024.newsbrowser.features.newsdetails
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
@@ -13,11 +13,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.ravindu1024.domain.model.NewsHeadline
-import com.ravindu1024.newsbrowser.ui.components.WebView
-import com.ravindu1024.newsbrowser.ui.state.NewsDetailUiState
-import com.ravindu1024.newsbrowser.ui.state.TopBarAction
+import com.ravindu1024.newsbrowser.ui.components.basic.TopBarAction
+import com.ravindu1024.newsbrowser.ui.components.basic.WebView
 import com.ravindu1024.newsbrowser.ui.theme.NewsBrowserTheme
-import com.ravindu1024.newsbrowser.ui.viewmodels.NewsDetailViewModel
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 

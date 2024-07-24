@@ -1,4 +1,4 @@
-package com.ravindu1024.newsbrowser.ui.state
+package com.ravindu1024.newsbrowser.features.sources
 
 import com.ravindu1024.domain.model.NewsSource
 

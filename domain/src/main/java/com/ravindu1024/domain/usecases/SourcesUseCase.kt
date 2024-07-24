@@ -18,17 +18,17 @@ class SourcesUseCase (
             }
     }
 
-    suspend fun getAllSavedSources(): Flow<List<String>> {
+    fun getAllSavedSources(): Flow<List<String>> {
         return newsRepository.getSavedSources()
     }
 
-    suspend fun addSavedSource(id: String): Flow<List<String>>{
+    fun addSavedSource(id: String): Flow<List<String>>{
         newsRepository.insertSavedSource(id)
 
         return newsRepository.getSavedSources()
     }
 
-    suspend fun deleteSavedSource(id: String): Flow<List<String>>{
+    fun deleteSavedSource(id: String): Flow<List<String>>{
         newsRepository.deleteSavedSource(id)
 
         return newsRepository.getSavedSources()

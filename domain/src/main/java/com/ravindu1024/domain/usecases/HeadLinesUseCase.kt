@@ -14,7 +14,7 @@ class HeadLinesUseCase(
 ) {
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    suspend fun getHeadlines(pageNum: Int, pageSize: Int): Flow<List<NewsHeadline>> {
+    fun getHeadlines(pageNum: Int, pageSize: Int): Flow<List<NewsHeadline>> {
         return newsRepository.getSavedSources()
             .flatMapMerge { sources ->
                 if (sources.isEmpty()) {

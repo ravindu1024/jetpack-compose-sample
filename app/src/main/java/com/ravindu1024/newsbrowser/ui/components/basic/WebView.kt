@@ -1,4 +1,4 @@
-package com.ravindu1024.newsbrowser.ui.components
+package com.ravindu1024.newsbrowser.ui.components.basic
 
 import android.view.ViewGroup
 import android.webkit.WebChromeClient

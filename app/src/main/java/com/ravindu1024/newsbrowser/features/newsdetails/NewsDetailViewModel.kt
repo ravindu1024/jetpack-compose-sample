@@ -1,10 +1,10 @@
-package com.ravindu1024.newsbrowser.ui.viewmodels
+package com.ravindu1024.newsbrowser.features.newsdetails
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ravindu1024.domain.model.NewsHeadline
-import com.ravindu1024.newsbrowser.ui.state.NewsDetailUiState
+import com.ravindu1024.domain.usecases.SavedHeadlinesUseCase
 import com.ravindu1024.newsbrowser.utils.launchIO
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,8 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class NewsDetailViewModel @Inject constructor(
-    private val savedStateHandle: SavedStateHandle,
-    private val savedHeadlinesUSeCase: com.ravindu1024.domain.usecases.SavedHeadlinesUseCase
+    private val savedHeadlinesUSeCase: SavedHeadlinesUseCase
 ): ViewModel()  {
 
     private val _uiState = MutableStateFlow(NewsDetailUiState())

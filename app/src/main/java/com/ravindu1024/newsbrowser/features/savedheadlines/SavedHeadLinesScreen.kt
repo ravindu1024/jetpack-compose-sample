@@ -1,4 +1,4 @@
-package com.ravindu1024.newsbrowser.ui.screens
+package com.ravindu1024.newsbrowser.features.savedheadlines
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -7,11 +7,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.ravindu1024.domain.model.NewsHeadline
-import com.ravindu1024.newsbrowser.ui.components.HeadlineRow
-import com.ravindu1024.newsbrowser.ui.components.PullRefreshLazyList
-import com.ravindu1024.newsbrowser.ui.state.SavedHeadlinesUiState
-import com.ravindu1024.newsbrowser.ui.state.TopBarAction
-import com.ravindu1024.newsbrowser.ui.viewmodels.SavedHeadlinesViewModel
+import com.ravindu1024.newsbrowser.ui.components.basic.TopBarAction
+import com.ravindu1024.newsbrowser.ui.components.composite.HeadlineRow
+import com.ravindu1024.newsbrowser.ui.components.composite.PullRefreshLazyList
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 

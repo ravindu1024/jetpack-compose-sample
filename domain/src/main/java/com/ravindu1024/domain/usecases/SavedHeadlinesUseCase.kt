@@ -11,7 +11,7 @@ class SavedHeadlinesUseCase(
     private val newsRepository: NewsRepository
 ) {
 
-    suspend fun addHeadline(headline: NewsHeadline): Flow<List<NewsHeadline>> {
+    fun addHeadline(headline: NewsHeadline): Flow<List<NewsHeadline>> {
         newsRepository.addSavedHeadline(headline.toEntity())
 
         return newsRepository
@@ -21,7 +21,7 @@ class SavedHeadlinesUseCase(
             }
     }
 
-    suspend fun deleteSavedHeadline(headline: NewsHeadline): Flow<List<NewsHeadline>> {
+    fun deleteSavedHeadline(headline: NewsHeadline): Flow<List<NewsHeadline>> {
         newsRepository.deleteHeadline(headline.toEntity())
 
         return newsRepository
@@ -31,7 +31,7 @@ class SavedHeadlinesUseCase(
             }
     }
 
-    suspend fun getAllSavedHeadlines(): Flow<List<NewsHeadline>> {
+    fun getAllSavedHeadlines(): Flow<List<NewsHeadline>> {
         return newsRepository
             .getAllSavedHeadlines()
             .map { headlines ->

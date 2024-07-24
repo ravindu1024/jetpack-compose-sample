@@ -9,6 +9,7 @@ import com.ravindu1024.data.sources.remote.NewsApi
 import com.ravindu1024.data.sources.local.NewsSourcesDao
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 
 class NewsRepository(
     private val newsApi: NewsApi,
@@ -16,11 +17,11 @@ class NewsRepository(
     private val headlinesDao: HeadlinesDao
 ) {
 
-    suspend fun getSavedSources(): Flow<List<String>> {
-        return flow {
-            val sources = newsSourcesDao.getAllRows().map { it.id }
-            emit(sources)
-        }
+    fun getSavedSources(): Flow<List<String>> {
+        return newsSourcesDao.getAllRows()
+            .map { rows ->
+                return@map rows.map { it.id }
+            }
     }
 
     suspend fun getNewsSources(country: String): Flow<List<NewsSourceDto>> {
@@ -41,31 +42,27 @@ class NewsRepository(
         }
     }
 
-    suspend fun insertSavedSource(source: String) {
+    fun insertSavedSource(source: String) {
         newsSourcesDao.insert(
             SavedSourceEntity(id = source)
         )
     }
 
-    suspend fun deleteSavedSource(source: String) {
+    fun deleteSavedSource(source: String) {
         newsSourcesDao.delete(
             SavedSourceEntity(id = source)
         )
     }
 
-    suspend fun addSavedHeadline(headline: HeadlineEntity) {
+    fun addSavedHeadline(headline: HeadlineEntity) {
         headlinesDao.insert(headline)
     }
 
-    suspend fun deleteHeadline(headline: HeadlineEntity) {
+    fun deleteHeadline(headline: HeadlineEntity) {
         headlinesDao.delete(headline)
     }
 
-    suspend fun getAllSavedHeadlines(): Flow<List<HeadlineEntity>> {
-        return flow {
-            emit(
-                headlinesDao.getAll()
-            )
-        }
+    fun getAllSavedHeadlines(): Flow<List<HeadlineEntity>> {
+        return headlinesDao.getAll()
     }
 }

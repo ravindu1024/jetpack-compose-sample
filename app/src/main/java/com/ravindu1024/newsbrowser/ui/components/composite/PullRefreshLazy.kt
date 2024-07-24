@@ -1,4 +1,4 @@
-package com.ravindu1024.newsbrowser.ui.components
+package com.ravindu1024.newsbrowser.ui.components.composite
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.tooling.preview.Preview
+import com.ravindu1024.newsbrowser.ui.components.basic.ListRefreshIndicator
 import com.ravindu1024.newsbrowser.ui.theme.NewsBrowserTheme
 
 @Composable
@@ -19,6 +20,7 @@ fun <T> PullRefreshLazyList(
     items: List<T>,
     pullRefreshState: PullToRefreshState?,
     isLoading: Boolean,
+    modifier: Modifier = Modifier,
     rowProvider: @Composable (T) -> Unit
 ) {
     Box(
@@ -26,9 +28,11 @@ fun <T> PullRefreshLazyList(
             Modifier
                 .nestedScroll(pullRefreshState.nestedScrollConnection)
                 .fillMaxSize()
+                .then(modifier)
         } else {
             Modifier
                 .fillMaxSize()
+                .then(modifier)
         }
     ) {
         LazyColumn {
@@ -56,7 +60,7 @@ fun HeadlineLazyListPreview() {
     val items = listOf("item 1", "item 2")
     val refreshState = PullToRefreshState(positionalThresholdPx = 0f)
     NewsBrowserTheme {
-        PullRefreshLazyList(items = items, pullRefreshState = refreshState, isLoading = false) {
+        PullRefreshLazyList(items = items, pullRefreshState = refreshState, isLoading = false, modifier = Modifier) {
             Text(text = it)
         }
     }

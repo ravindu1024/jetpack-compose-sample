@@ -1,4 +1,4 @@
-package com.ravindu1024.newsbrowser.ui.components
+package com.ravindu1024.newsbrowser.ui.components.composite
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

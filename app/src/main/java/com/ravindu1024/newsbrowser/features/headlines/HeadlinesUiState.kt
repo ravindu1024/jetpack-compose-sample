@@ -1,4 +1,4 @@
-package com.ravindu1024.newsbrowser.ui.state
+package com.ravindu1024.newsbrowser.features.headlines
 
 import com.ravindu1024.domain.model.NewsHeadline
 

@@ -1,9 +1,8 @@
-package com.ravindu1024.newsbrowser.ui.viewmodels
+package com.ravindu1024.newsbrowser.features.sources
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ravindu1024.domain.usecases.SourcesUseCase
-import com.ravindu1024.newsbrowser.ui.state.SourcesListUiState
 import com.ravindu1024.newsbrowser.utils.launchIO
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -31,7 +30,6 @@ class SourcesViewModel @Inject constructor(
         }
 
         viewModelScope.launchIO {
-
             sourcesUseCase.getAllSavedSources()
                 .flatMapConcat { saved ->
                     _uiState.update {
@@ -58,7 +56,7 @@ class SourcesViewModel @Inject constructor(
             it.copy(isLoading = true)
         }
 
-        viewModelScope.launch {
+        viewModelScope.launchIO {
             if(add){
                 sourcesUseCase.addSavedSource(source)
             }else{

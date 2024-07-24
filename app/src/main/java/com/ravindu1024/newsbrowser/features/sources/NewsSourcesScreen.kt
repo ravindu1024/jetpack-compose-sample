@@ -1,4 +1,4 @@
-package com.ravindu1024.newsbrowser.ui.screens
+package com.ravindu1024.newsbrowser.features.sources
 
 import androidx.compose.material3.pulltorefresh.PullToRefreshState
 import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
@@ -6,14 +6,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.ravindu1024.domain.model.NewsSource
-import com.ravindu1024.newsbrowser.ui.components.NewsSourceRow
-import com.ravindu1024.newsbrowser.ui.components.PullRefreshLazyList
-import com.ravindu1024.newsbrowser.ui.state.SourcesListUiState
-import com.ravindu1024.newsbrowser.ui.state.TopBarAction
-import com.ravindu1024.newsbrowser.ui.viewmodels.SourcesViewModel
+import com.ravindu1024.newsbrowser.ui.components.basic.TopBarAction
+import com.ravindu1024.newsbrowser.ui.components.composite.NewsSourceRow
+import com.ravindu1024.newsbrowser.ui.components.composite.PullRefreshLazyList
 
 @Composable
 fun NewsSourcesScreen(
@@ -53,12 +52,14 @@ fun NewsSourcesScreen(
 fun NewsSourcesScreenContent(
     uiState: SourcesListUiState,
     pullRefreshState: PullToRefreshState,
-    onSwitchClicked: (Boolean, NewsSource) -> Unit
+    modifier: Modifier = Modifier,
+    onSwitchClicked: (Boolean, NewsSource) -> Unit,
 ) {
     PullRefreshLazyList(
         items = uiState.sources,
         pullRefreshState = pullRefreshState,
         isLoading = uiState.isLoading,
+        modifier = modifier,
         rowProvider = { item ->
             NewsSourceRow(
                 source = item,

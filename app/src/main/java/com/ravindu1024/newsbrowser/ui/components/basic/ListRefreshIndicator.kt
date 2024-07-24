@@ -1,4 +1,4 @@
-package com.ravindu1024.newsbrowser.ui.components
+package com.ravindu1024.newsbrowser.ui.components.basic
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
