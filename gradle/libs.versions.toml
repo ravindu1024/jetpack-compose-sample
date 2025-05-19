@@ -1,13 +1,13 @@
 [versions]
 minSdkVersion = "26"
-compileSdkVersion = "34"
-targetSdkVersion = "34"
+compileSdkVersion = "35"
+targetSdkVersion = "35"
 version = "1.0"
 versionCode = "1"
 jvmTarget = "1.8"
 
 agp = "8.4.2"
-kotlin = "1.9.0"
+kotlin = "1.9.25"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.1.5"
@@ -63,4 +63,5 @@ kotlin-ksp = { id = "com.google.devtools.ksp", version.ref = "kspVersion" }
 hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hiltVersion" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version = "1.7.10"}
 android-library = { id = "com.android.library", version.ref = "agp" }
+composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 
